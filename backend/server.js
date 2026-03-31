@@ -1,22 +1,30 @@
 require("dotenv").config();
-const askRoutes = require("./routes/askRoutes");
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 
-
-const uploadRoutes = require("./routes/uploadRoutes");  // ADD THIS LINE
-
+const uploadRoutes = require("./routes/uploadRoutes");
+const askRoutes = require("./routes/askRoutes");
+const documentRoutes = require("./routes/documentRoutes");
+const quizRoutes = require("./routes/quizRoutes");
+const bookmarkRoutes = require("./routes/bookmarkRoutes");
+const revisionRoutes = require("./routes/revisionRoutes");
+const dashboardRoutes = require("./routes/dashboardRoutes");
+const studyPlanRoutes = require("./routes/studyPlanRoutes");
 const app = express();
 
 app.use(cors());
 app.use(express.json());
 
-const documentRoutes = require("./routes/documentRoutes");
-
-app.use("/api", uploadRoutes);  // ADD THIS LINE
+app.use("/api", uploadRoutes);
 app.use("/api", askRoutes);
 app.use("/api/docs", documentRoutes);
+app.use("/api", quizRoutes);
+app.use("/api", bookmarkRoutes);
+app.use("/api", revisionRoutes);
+app.use("/api", dashboardRoutes);
+app.use("/api", studyPlanRoutes);
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URI)
@@ -29,6 +37,4 @@ app.get("/", (req,res)=>{
 
 app.listen(PORT, ()=>{
     console.log(`Server running on port ${PORT}`);
-    console.log("Gemini Key:", process.env.GEMINI_API_KEY);
-
 });

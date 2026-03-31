@@ -2,22 +2,22 @@ const express = require("express");
 const router = express.Router();
 const Document = require("../models/Document");
 
-router.post("/upload", async (req, res) => {
+router.get("/documents", async (req, res) => {
+
   try {
-    const { title, content } = req.body;
 
-    const newDoc = new Document({
-      title,
-      content
-    });
+    const docs = await Document.find().select("_id title");
 
-    await newDoc.save();
-
-    res.json({ message: "Document stored successfully" });
+    res.json(docs);
 
   } catch (error) {
-    res.status(500).json({ error: error.message });
+
+    res.status(500).json({
+      error: error.message
+    });
+
   }
+
 });
 
 module.exports = router;

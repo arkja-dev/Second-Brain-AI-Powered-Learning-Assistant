@@ -1,12 +1,13 @@
 const mongoose = require("mongoose");
 
-const DocumentSchema = new mongoose.Schema({
-  title: String,
-  chunks: [String],
-  uploadedAt: {
-    type: Date,
-    default: Date.now
-  }
+const chunkSchema = new mongoose.Schema({
+  text: String,
+  embedding: [Number]
 });
 
-module.exports = mongoose.model("Document", DocumentSchema);
+const documentSchema = new mongoose.Schema({
+  title: String,
+  chunks: [chunkSchema]
+});
+
+module.exports = mongoose.model("Document", documentSchema);
