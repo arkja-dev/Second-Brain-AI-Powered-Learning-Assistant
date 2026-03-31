@@ -12,6 +12,8 @@ const bookmarkRoutes = require("./routes/bookmarkRoutes");
 const revisionRoutes = require("./routes/revisionRoutes");
 const dashboardRoutes = require("./routes/dashboardRoutes");
 const studyPlanRoutes = require("./routes/studyPlanRoutes");
+const searchRoutes = require("./routes/searchRoutes");
+
 const app = express();
 
 app.use(cors());
@@ -25,6 +27,8 @@ app.use("/api", bookmarkRoutes);
 app.use("/api", revisionRoutes);
 app.use("/api", dashboardRoutes);
 app.use("/api", studyPlanRoutes);
+app.use("/api", searchRoutes);
+
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(process.env.MONGO_URI)

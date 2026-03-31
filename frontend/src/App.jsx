@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StudyPlan from "./pages/StudyPlan";
 import Navbar from "./components/Navbar";
-
+import Search from "./pages/Search";
 import Dashboard from "./pages/Dashboard";
 import Ask from "./pages/Ask";
 import Quiz from "./pages/Quiz";
@@ -26,6 +26,8 @@ function App() {
         <Route path="/upload" element={<Upload />} />
 
         <Route path="/study-plan" element={<StudyPlan />} />
+
+        <Route path="/search" element={<Search />} />
       </Routes>
 
     </BrowserRouter>

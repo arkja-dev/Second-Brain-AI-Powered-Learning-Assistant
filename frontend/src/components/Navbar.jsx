@@ -17,6 +17,7 @@ function Navbar() {
         <Link to="/quiz">Quiz</Link>
         <Link to="/upload">Upload</Link>
         <Link to="/study-plan">Study Plan</Link>
+        <Link to="/search">Search</Link>
 
       </div>
 
